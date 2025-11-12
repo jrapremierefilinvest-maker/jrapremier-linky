@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: jrapremierefilinvest-maker/jrapremier-linky
+  repo: https://jrapremier-linky.netlify.app/admin
   branch: main
 
 media_folder: "assets/uploads"
