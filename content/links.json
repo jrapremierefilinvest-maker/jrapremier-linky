@@ -1,0 +1,37 @@
+{
+  "title": "John Alcantara \u2022 JRA Premier Realty",
+  "tagline": "Helping you find the perfect home in Bulacan \u2014 view units, book tripping, or chat with MIRA.",
+  "profile_image": "profile.jpg",
+  "buttons": [
+    {
+      "label": "View Available Units",
+      "url": "https://sites.google.com/view/fli-centralluzon/bulacan",
+      "primary": true,
+      "icon": "\ud83c\udfe1"
+    },
+    {
+      "label": "Book a Site Tripping",
+      "url": "https://calendly.com/jrapremier/site-tripping",
+      "primary": false,
+      "icon": "\ud83d\udcc5"
+    },
+    {
+      "label": "Chat with MIRA (WhatsApp)",
+      "url": "https://wa.me/639171234567",
+      "primary": false,
+      "icon": "\ud83d\udcac"
+    },
+    {
+      "label": "Watch Project Video",
+      "url": "https://www.youtube.com/",
+      "primary": false,
+      "icon": "\ud83c\udfa5"
+    },
+    {
+      "label": "Visit Project Page",
+      "url": "https://jrapremier.example.com",
+      "primary": false,
+      "icon": "\ud83c\udf10"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+backend:
+  name: github
+  repo: your-github-username/jrapremier-linky
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "links"
+    label: "Links"
+    folder: "content"
+    create: false
+    files:
+      - label: "Site Links"
+        name: "site_links"
+        file: "content/links.json"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Tagline", name: "tagline", widget: "string"}
+          - {label: "Profile Image", name: "profile_image", widget: "image"}
+          - {label: "Buttons", name: "buttons", widget: "list", fields: [{label: "Label", name: "label", widget: "string"},{label:"URL",name:"url",widget:"string"},{label:"Primary",name:"primary",widget:"boolean"}]}
+
+  - name: "faqs"
+    label: "FAQs"
+    folder: "content/faqs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Triggers (comma separated)", name: "triggers", widget: "string"}
+      - {label: "Answer", name: "answer", widget: "markdown"}
+      - {label: "Buttons", name: "buttons", widget: "list", fields: [{label:"Label",name:"label",widget:"string"},{label:"Action (URL)",name:"action",widget:"string"}]}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JRA Premier Linky (Editable)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#0f7a4f;--muted:#6b7280;--bg:#fff}
+body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:0;background:linear-gradient(180deg,#f7fdf8,white);display:flex;justify-content:center;padding:28px}
+.container{width:100%;max-width:760px;background:var(--bg);border-radius:18px;padding:22px;box-shadow:0 10px 30px rgba(2,6,23,0.06)}
+.header{display:flex;gap:16px;align-items:center}
+.avatar{width:86px;height:86px;border-radius:14px;overflow:hidden;border:3px solid rgba(15,122,79,0.12)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.title h1{margin:0;font-size:18px;color:#0b3f2a}
+.title p{margin:6px 0 0;color:var(--muted);font-size:13px}
+.buttons{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px}
+.btn{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;text-decoration:none;font-weight:600;box-shadow:0 4px 10px rgba(2,6,23,0.04);background:#f6faf8;color:var(--muted);border:1px solid rgba(15,122,79,0.06)}
+.btn.primary{background:var(--accent);color:#fff;border:none}
+.faqs{margin-top:20px}
+.faq{border-top:1px solid #f0f0f0;padding:12px 0}
+.faq h3{margin:0;font-size:15px}
+.faq p{margin:8px 0 0;color:var(--muted)}
+.footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+.small{font-size:13px;color:var(--muted);padding:6px 10px;border-radius:10px;background:#fbfbfb}
+.admin-note{font-size:13px;color:var(--muted);margin-top:12px}
+</style>
+</head>
+<body>
+<div class="container" id="app" role="main">
+ <header class="header">
+   <div class="avatar"><img src="profile.jpg" id="profileImg" alt="Profile"></div>
+   <div class="title"><h1 id="pageTitle">JRA Premier Realty</h1><p id="tagline">Helping you find the perfect home in Bulacan.</p></div>
+ </header>
+
+ <section class="buttons" id="buttons"></section>
+
+ <section class="faqs" id="faqsArea"><h2>FAQs</h2></section>
+
+ <div class="footer"><div class="small" id="locationText">Location: Filinvest Homes San Rafael, Bulacan</div><div class="small">Share: <span id="shareLink"></span></div></div>
+
+ <div class="admin-note">Admin: Edit content via /admin (Netlify CMS) or update <code>/content/faqs.json</code> and <code>/content/links.json</code>.</div>
+</div>
+
+<script>
+async function loadJSON(path){ try{ const r=await fetch(path); return await r.json(); }catch(e){console.error('load err',e); return null; } }
+
+async function render(){
+  const links = await loadJSON('/content/links.json');
+  const faqs = await loadJSON('/content/faqs.json');
+  if(links){
+    document.getElementById('pageTitle').textContent = links.title || document.getElementById('pageTitle').textContent;
+    document.getElementById('tagline').textContent = links.tagline || document.getElementById('tagline').textContent;
+    if(links.profile_image) document.getElementById('profileImg').src = links.profile_image;
+    const btns = document.getElementById('buttons'); btns.innerHTML='';
+    (links.buttons||[]).forEach(b=>{
+      const a=document.createElement('a'); a.className='btn '+(b.primary?'primary':''); a.href=b.url||'#'; a.target='_blank'; a.rel='noopener';
+      a.innerHTML = '<span>'+ (b.icon || '') +'</span><span>'+b.label+'</span>';
+      btns.appendChild(a);
+    });
+  }
+  if(faqs){
+    const faqsArea = document.getElementById('faqsArea');
+    (faqs||[]).forEach(f=>{
+      const div=document.createElement('div'); div.className='faq';
+      const h=document.createElement('h3'); h.textContent = f.title;
+      const p=document.createElement('p'); p.innerHTML = f.answer.replace(/\n/g,'<br>');
+      div.appendChild(h); div.appendChild(p);
+      if(f.buttons && f.buttons.length){
+        const wrap=document.createElement('div'); wrap.style.marginTop='8px'; f.buttons.forEach(b=>{
+          const a=document.createElement('a'); a.className='btn'; a.style.marginRight='8px'; a.href=b.action||'#'; a.target='_blank'; a.rel='noopener';
+          a.textContent = b.label; wrap.appendChild(a);
+        }); div.appendChild(wrap);
+      }
+      faqsArea.appendChild(div);
+    });
+  }
+  document.getElementById('shareLink').textContent = location.href;
+}
+render();
+</script>
+</body>
+</html>

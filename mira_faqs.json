@@ -1,0 +1,83 @@
+[
+  {
+    "intent_id": "location",
+    "phrases": [
+      "saan",
+      "nasaan",
+      "where",
+      "location",
+      "san rafael",
+      "bulacan"
+    ],
+    "answer": "\ud83d\udccd Hi po!\\nThank you for your interest!\\nAlta Vida Estates is located in San Rafael, Bulacan \u2014 right in front of Bulacan State University San Rafael, about 15 minutes away from SM Baliuag. \ud83c\udfe1\u2728\\n\\nWould you like me to show you more project photos or nearby landmarks?",
+    "buttons": [
+      {
+        "label": "Yes, show photos",
+        "action": "#show_photos"
+      },
+      {
+        "label": "Schedule tripping",
+        "action": "https://calendly.com/jrapremier/site-tripping"
+      },
+      {
+        "label": "Chat on WhatsApp",
+        "action": "https://wa.me/639171234567?text=Hi%20JRA%20I%20want%20to%20ask%20about%20the%20location%20of%20Alta%20Vida%20Estates"
+      }
+    ],
+    "threshold": 0.65
+  },
+  {
+    "intent_id": "tcp",
+    "phrases": [
+      "price",
+      "magkano",
+      "how much",
+      "tcp",
+      "presyo",
+      "cost"
+    ],
+    "answer": "\ud83d\udcb0 Hi po!\\nFor our Diana Model Unit, Total Contract Price starts around \u20b11.2M \u2014 with flexible payment terms.\\n\\nWe also have an early move-in promo and low downpayment option for qualified buyers!\\n\\nWould you like me to check if you qualify for the promo? \ud83d\udc9a",
+    "buttons": [
+      {
+        "label": "Yes, check my qualification",
+        "action": "#check_qualification"
+      },
+      {
+        "label": "See computation sample",
+        "action": "#show_computation"
+      },
+      {
+        "label": "Talk to broker",
+        "action": "https://wa.me/639171234567?text=Hi%20JRA%20Please%20send%20TCP%20details%20for%20Diana%20Model"
+      }
+    ],
+    "threshold": 0.65
+  },
+  {
+    "intent_id": "turnover",
+    "phrases": [
+      "turnover",
+      "kailan",
+      "move in",
+      "handover",
+      "turnover date",
+      "handover date"
+    ],
+    "answer": "\ud83c\udfe1 Hi po!\\nTurnover for Alta Vida Estates units is within 24 months from reservation date.\\n\\nWe also have an early move-in promo, so you may qualify to move in sooner depending on your chosen payment plan. \u2728\\n\\nWould you like me to connect you with one of our brokers for full details?",
+    "buttons": [
+      {
+        "label": "Yes, connect me to a broker",
+        "action": "#assign_broker"
+      },
+      {
+        "label": "Check qualification first",
+        "action": "#check_qualification"
+      },
+      {
+        "label": "Send to broker now",
+        "action": "https://wa.me/639171234567?text=Hi%20JRA%20When%20is%20the%20turnover%20date%20for%20Alta%20Vida%20Estates%3F"
+      }
+    ],
+    "threshold": 0.65
+  }
+]
