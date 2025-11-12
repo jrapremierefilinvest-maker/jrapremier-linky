@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-github-username/jrapremier-linky
+  repo: jrapremierefilinvest-maker/jrapremier-linky
   branch: main
 
 media_folder: "assets/uploads"
